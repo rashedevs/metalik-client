@@ -9,7 +9,7 @@ const BusinessSummary = () => {
         </h3>
       </div>
       <div>
-        <div class="stats stats-vertical lg:stats-horizontal shadow my-20">
+        <div class="stats stats-vertical lg:stats-horizontal shadow my-16">
           <div class="stat px-12">
             <div class="stat-figure text-secondary">
               <svg
@@ -27,7 +27,7 @@ const BusinessSummary = () => {
               </svg>
             </div>
             <div class="stat-title">Served</div>
-            <div class="stat-value">10K+</div>
+            <div class="stat-value text-primary">10K+</div>
             <div class="stat-desc">Customers</div>
           </div>
 
@@ -48,7 +48,7 @@ const BusinessSummary = () => {
               </svg>
             </div>
             <div class="stat-title">Annual Revenue</div>
-            <div class="stat-value">120M+</div>
+            <div class="stat-value text-pink-600">120M+</div>
             <div class="stat-desc">↗︎ 200 (22%)</div>
           </div>
 
@@ -69,7 +69,7 @@ const BusinessSummary = () => {
               </svg>
             </div>
             <div class="stat-title">Reviews</div>
-            <div class="stat-value">33K+</div>
+            <div class="stat-value text-secondary">3K+</div>
             <div class="stat-desc">↗︎ 90 (14%)</div>
           </div>
         </div>
