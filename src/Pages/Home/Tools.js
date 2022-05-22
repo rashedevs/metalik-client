@@ -73,7 +73,7 @@ const Tools = () => {
       <div className="text-center">
         <h3 className="text-accent text-xl font-bold uppercase">Tools</h3>
       </div>
-      <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10 px-12">
         {tools.slice(0, 6).map((tool) => (
           <Tool key={tool._id} tool={tool}></Tool>
         ))}
