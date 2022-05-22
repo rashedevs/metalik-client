@@ -17,7 +17,7 @@ const Banner = () => {
             Carpentry Woodworking Tools Manufacturer In Bangladesh
           </h1>
           <p class="mb-5">We ensure quality</p>
-          <button class="btn btn-primary text-white font-bold bg-gradient-to-r from-primary  to-secondary">
+          <button class="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">
             Get Started
           </button>
         </div>

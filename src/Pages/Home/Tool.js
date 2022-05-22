@@ -7,10 +7,15 @@ const Tool = ({ tool }) => {
         <img src={tool.img} alt="Shoes" class="rounded-xl" />
       </figure>
       <div class="card-body items-center text-center">
-        <h2 class="card-title">Shoes!</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <h2 class="card-title">{tool.name}</h2>
+        <p>Description: {tool.description}</p>
+        <p>Price: ${tool.price} /unit</p>
+        <p>Stock Available: {tool.available_quantity} pieces</p>
+        <p>Minimum Order: {tool.min_order} pieces</p>
         <div class="card-actions">
-          <button class="btn btn-primary">Buy Now</button>
+          <button class="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">
+            Buy Now
+          </button>
         </div>
       </div>
     </div>
