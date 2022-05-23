@@ -33,7 +33,7 @@ const Navbar = () => {
       <li>
         {user ? (
           <div>
-            <button
+            {/* <button
               className="btn btn-ghost my-auto flex flex-col"
               onClick={logout}
             >
@@ -41,7 +41,18 @@ const Navbar = () => {
               <small className="text-primary font-bold mt-3 bg-accent rounded px-1">
                 {user?.displayName || ""}
               </small>
-            </button>
+            </button> */}
+            <div
+              className="tooltip tooltip-open tooltip-bottom tooltip-primary"
+              data-tip={user?.displayName}
+            >
+              <button
+                className="btn btn-ghost my-auto flex flex-col"
+                onClick={logout}
+              >
+                LogOut
+              </button>
+            </div>
           </div>
         ) : (
           <Link to="/login">Login</Link>
@@ -76,7 +87,10 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl" href="/">
+        <a
+          className="btn btn-ghost normal-case text-2xl font-bold text-purple-900"
+          href="/"
+        >
           Metalik
         </a>
       </div>

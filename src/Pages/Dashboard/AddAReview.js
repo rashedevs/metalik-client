@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const AddAReview = () => {
   const {
@@ -19,6 +21,7 @@ const AddAReview = () => {
     })
       .then((res) => res.json())
       .then((result) => {
+        toast("Review Added Successfully");
         // console.log(result);
       });
     reset();
@@ -99,6 +102,7 @@ const AddAReview = () => {
               type="submit"
             />
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>

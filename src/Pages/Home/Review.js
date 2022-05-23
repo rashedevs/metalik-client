@@ -4,7 +4,17 @@ const Review = ({ review }) => {
   return (
     <div className="card lg:max-w-lg bg-accent shadow-xl">
       <div className="card-body items-center text-center text-white">
-        <h2 className="card-title">Rating: {review.rating}*</h2>
+        <h2 className="card-title">
+          Rating: {review.rating}
+          <span className="rating">
+            <input
+              type="radio"
+              name="rating-4"
+              class="mask mask-star-2 bg-green-500"
+              checked
+            />
+          </span>
+        </h2>
         <p>{review.description}</p>
       </div>
     </div>

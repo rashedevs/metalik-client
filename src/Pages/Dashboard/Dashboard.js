@@ -9,6 +9,7 @@ const Dashboard = () => {
         <h2 className="text-3xl font-bold text-pink-500">
           Welcome to Dashboard
         </h2>
+        <div className="divider flex justify-center items-center mx-auto w-1/2"></div>
         <Outlet></Outlet>
       </div>
       <div className="drawer-side">
