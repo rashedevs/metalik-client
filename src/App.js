@@ -13,6 +13,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import AddAReview from "./Pages/Dashboard/AddAReview";
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="orders" element={<MyOrders></MyOrders>} />
           <Route path="review" element={<AddAReview></AddAReview>} />
         </Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
