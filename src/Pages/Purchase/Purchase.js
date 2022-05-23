@@ -34,6 +34,7 @@ const Purchase = () => {
   }, [tool, id]);
   const onSubmit = (data) => {
     const { address, phone, quantity } = data;
+    const remainingQuantity = parseInt(available_quantity - quantity);
     const totalPrice = parseInt(price * quantity);
     const orderedTool = {
       name,
@@ -45,7 +46,29 @@ const Purchase = () => {
       img,
       quantity,
     };
-    //send purchased to db
+    const updatedTool = {
+      name,
+      img,
+      description,
+      min_order,
+      available_quantity: remainingQuantity,
+      price,
+    };
+
+    //update data to the server
+    const url1 = `http://localhost:5000/tool/${id}`;
+    fetch(url1, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedTool),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        // console.log(result);
+      });
+    //send ordered data to db
     const url = `http://localhost:5000/order`;
     fetch(url, {
       method: "POST",

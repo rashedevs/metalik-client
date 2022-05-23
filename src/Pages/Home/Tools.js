@@ -7,7 +7,7 @@ const Tools = () => {
     fetch("http://localhost:5000/tool")
       .then((res) => res.json())
       .then((data) => setTools(data));
-  }, []);
+  }, [tools]);
   return (
     <div className="my-20">
       <div className="text-center">
