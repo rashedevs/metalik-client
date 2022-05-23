@@ -8,6 +8,7 @@ import Login from "./Pages/Login/Login";
 import Footer from "./Pages/Shared/Footer";
 import Purchase from "./Pages/Purchase/Purchase";
 import SignUp from "./Pages/Login/SignUp";
+import RequireAuth from "./Pages/Login/RequireAuth";
 
 function App() {
   return (
@@ -19,7 +20,14 @@ function App() {
         <Route path="portfolio" element={<MyPortfolio></MyPortfolio>} />
         <Route path="login" element={<Login></Login>} />
         <Route path="signup" element={<SignUp></SignUp>} />
-        <Route path="purchase/:id" element={<Purchase></Purchase>} />
+        <Route
+          path="purchase/:id"
+          element={
+            <RequireAuth>
+              <Purchase></Purchase>
+            </RequireAuth>
+          }
+        />
       </Routes>
       <Footer></Footer>
     </div>
