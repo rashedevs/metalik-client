@@ -18,6 +18,11 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
+      {user && (
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
 
       <li>
         <Link to="/blogs">Blogs</Link>
@@ -34,7 +39,7 @@ const Navbar = () => {
             >
               LogOut <br />{" "}
               <small className="text-primary font-bold mt-3 bg-accent rounded px-1">
-                {user?.displayName}
+                {user?.displayName || ""}
               </small>
             </button>
           </div>

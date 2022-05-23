@@ -9,6 +9,7 @@ import Footer from "./Pages/Shared/Footer";
 import Purchase from "./Pages/Purchase/Purchase";
 import SignUp from "./Pages/Login/SignUp";
 import RequireAuth from "./Pages/Login/RequireAuth";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -25,6 +26,14 @@ function App() {
           element={
             <RequireAuth>
               <Purchase></Purchase>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
             </RequireAuth>
           }
         />
