@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  useSignInWithEmailAndPassword,
+  useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
@@ -16,8 +16,8 @@ const Login = () => {
     handleSubmit,
     reset,
   } = useForm();
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
   let errorBox;
 
@@ -38,15 +38,38 @@ const Login = () => {
   }
   const onSubmit = (data) => {
     console.log(data);
-    signInWithEmailAndPassword(data.email, data.password);
+    createUserWithEmailAndPassword(data.email, data.password);
     reset();
   };
   return (
     <div className="flex h-screen justify-center items-center">
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
-          <h2 className="text-center text-2xl font-bold">Login</h2>
+          <h2 className="text-center text-2xl font-bold">Sign Up</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="input input-bordered w-full max-w-xs"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Name is required",
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.name?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.name.message}
+                  </span>
+                )}
+              </label>
+            </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -114,15 +137,15 @@ const Login = () => {
             {errorBox}
             <input
               className="btn btn-primary text-white w-full max-w-xs font-bold"
-              value="Login"
+              value="Sign Up"
               type="submit"
             />
           </form>
           <p className="text-center">
             <small>
-              New to Metalik?{" "}
-              <Link className="text-primary" to="/signup">
-                Create New Account
+              Already have an account?{" "}
+              <Link className="text-primary" to="/login">
+                Please login
               </Link>
             </small>
           </p>
@@ -139,4 +162,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
