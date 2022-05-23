@@ -9,7 +9,18 @@ const AddAReview = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    const url = `http://localhost:5000/review`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        // console.log(result);
+      });
     reset();
   };
   return (
@@ -67,7 +78,7 @@ const AddAReview = () => {
                 type="text"
                 placeholder="Your Review"
                 className="input input-bordered w-full max-w-xs"
-                {...register("review", {
+                {...register("description", {
                   required: {
                     value: true,
                     message: "Review is required",
@@ -75,9 +86,9 @@ const AddAReview = () => {
                 })}
               />
               <label className="label">
-                {errors.review?.type === "required" && (
+                {errors.description?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.review.message}
+                    {errors.description.message}
                   </span>
                 )}
               </label>
