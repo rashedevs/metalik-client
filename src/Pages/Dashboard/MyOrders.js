@@ -10,7 +10,7 @@ const MyOrders = () => {
   const [myOrders, setMyOrders] = useState([]);
   useEffect(() => {
     const email = user?.email;
-    const url = `http://localhost:5000/orders?email=${email}`;
+    const url = `https://powerful-bastion-48261.herokuapp.com/orders?email=${email}`;
     if (user) {
       fetch(url, {
         method: "GET",
@@ -36,7 +36,7 @@ const MyOrders = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `http://localhost:5000/orders/${id}`;
+      const url = `https://powerful-bastion-48261.herokuapp.com/orders/${id}`;
       fetch(url, {
         method: "DELETE",
       })

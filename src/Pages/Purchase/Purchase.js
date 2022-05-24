@@ -28,7 +28,7 @@ const Purchase = () => {
   }, [status, errors.quantity?.type]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tool/${id}`)
+    fetch(`https://powerful-bastion-48261.herokuapp.com/tool/${id}`)
       .then((res) => res.json())
       .then((data) => setTool(data));
   }, [tool, id]);
@@ -57,7 +57,7 @@ const Purchase = () => {
     };
 
     //update data to the server
-    const url1 = `http://localhost:5000/tool/${id}`;
+    const url1 = `https://powerful-bastion-48261.herokuapp.com/tool/${id}`;
     fetch(url1, {
       method: "PUT",
       headers: {
@@ -70,7 +70,7 @@ const Purchase = () => {
         // console.log(result);
       });
     //send ordered data to db
-    const url = `http://localhost:5000/order`;
+    const url = `https://powerful-bastion-48261.herokuapp.com/order`;
     fetch(url, {
       method: "POST",
       headers: {
