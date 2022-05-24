@@ -1,24 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
 import auth from "../../firebase.init";
-import Loading from "../Shared/Loading";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   const [myOrders, setMyOrders] = useState([]);
   useEffect(() => {
     const email = user?.email;
     const url = `http://localhost:5000/orders?email=${email}`;
     if (user) {
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => setMyOrders(data));
+      fetch(url, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => {
+          if (res.status === 401 || res.status === 403) {
+            signOut(auth);
+            localStorage.removeItem("accessToken");
+            navigate("/");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setMyOrders(data);
+        });
     }
-  }, [myOrders, user]);
-  if (!myOrders.length) {
-    return <Loading></Loading>;
-  }
+  }, [myOrders, user, navigate]);
+
   // delete a specific order
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");

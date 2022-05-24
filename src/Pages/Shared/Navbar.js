@@ -12,6 +12,7 @@ const Navbar = () => {
   }
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken");
   };
   const menuItems = (
     <>
@@ -44,7 +45,7 @@ const Navbar = () => {
             </button> */}
             <div
               className="tooltip tooltip-open tooltip-bottom tooltip-primary"
-              data-tip={user?.displayName}
+              data-tip={user?.displayName || ""}
             >
               <button
                 className="btn btn-ghost my-auto flex flex-col"
