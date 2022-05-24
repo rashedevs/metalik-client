@@ -45,6 +45,7 @@ const Purchase = () => {
       description,
       img,
       quantity,
+      paid: true,
     };
     const updatedTool = {
       name,
