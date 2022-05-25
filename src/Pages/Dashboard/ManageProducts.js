@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 import ProductRow from "./ProductRow";
 
 const ManageProducts = () => {
+  const [deleting, setDeleting] = useState(null);
   const {
     data: tools,
     isLoading,
@@ -41,11 +43,19 @@ const ManageProducts = () => {
                 index={index}
                 key={tool._id}
                 tool={tool}
+                setDeleting={setDeleting}
               ></ProductRow>
             ))}
           </tbody>
         </table>
       </div>
+      {deleting && (
+        <DeleteConfirmModal
+          deleting={deleting}
+          refetch={refetch}
+          setDeleting={setDeleting}
+        ></DeleteConfirmModal>
+      )}
     </div>
   );
 };
