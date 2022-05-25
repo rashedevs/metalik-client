@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const {
@@ -7,14 +8,52 @@ const AddProduct = () => {
     handleSubmit,
     reset,
   } = useForm();
+  const imageStorageKey = "ccaeae197f35815ea6c1a83634610ad7";
   const onSubmit = async (data) => {
-    console.log(data);
-    reset();
+    const image = data.img[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+    fetch(url, { method: "POST", body: formData })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+          const tool = {
+            name: data.name,
+            img: img,
+            description: data.description,
+            min_order: data.min_order,
+            available_quantity: data.available_quantity,
+            price: data.price,
+          };
+          // send to db
+          fetch("http://localhost:5000/tool", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(tool),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              if (inserted.insertedId) {
+                toast.success("Product added successfully");
+                reset();
+              } else {
+                toast.error("Failed to add the product");
+              }
+            });
+        }
+      });
   };
   return (
     <div>
-      <h2 className="text-xl text-center text-purple-600">Add A Product</h2>
-      <div className="flex justify-center items-center">
+      <h2 className="text-xl text-center text-purple-600 font-semibold p-0 mt-0">
+        Add A Product
+      </h2>
+      <div className="flex justify-center m-0">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control w-full max-w-xs">
             <input
@@ -138,7 +177,11 @@ const AddProduct = () => {
             </label>
           </div>
 
-          <input className="btn w-full max-w-xs" type="submit" value="Add" />
+          <input
+            className="btn btn-primary font-bold text-white w-full max-w-xs"
+            type="submit"
+            value="Add"
+          />
         </form>
       </div>
     </div>
