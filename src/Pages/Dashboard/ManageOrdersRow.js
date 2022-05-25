@@ -1,7 +1,21 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const ManageOrdersRow = ({ order, index, refetch, setDeleting }) => {
-  const { name, quantity, paid, status, email } = order;
+  const { _id, name, quantity, paid, status, email } = order;
+  const makeShipped = () => {
+    fetch(`http://localhost:5000/order/${_id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+        toast.success("Shipped successfully");
+      });
+  };
   return (
     <tr>
       <th>{index + 1}</th>
@@ -32,7 +46,11 @@ const ManageOrdersRow = ({ order, index, refetch, setDeleting }) => {
             Cancel Now
           </label>
         )}
-        {paid && <button className="btn btn-xs btn-accent">Shipped Now</button>}
+        {paid && (
+          <button onClick={makeShipped} className="btn btn-xs btn-accent">
+            Shipped Now
+          </button>
+        )}
       </td>
     </tr>
   );
