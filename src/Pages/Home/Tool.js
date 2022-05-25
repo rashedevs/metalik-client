@@ -11,14 +11,24 @@ const Tool = ({ tool }) => {
   return (
     <div className="card lg:max-w-lg bg-base-100 shadow-xl">
       <figure className="px-10 pt-10">
-        <img src={img} alt="tool" className="rounded-xl" />
+        <img src={img} alt="tool" className="rounded-xl h-56" />
       </figure>
       <div className="card-body items-center text-center">
-        <h2 className="card-title">{name}</h2>
-        <p>Description: {description}</p>
-        <p>Price: ${price} /unit</p>
-        <p>Stock Available: {available_quantity} pieces</p>
-        <p>Minimum Order: {min_order} pieces</p>
+        <h2 className="card-title text-purple-600 font-semibold">{name}</h2>
+        <p>
+          <span className="text-green-600">Description:</span> {description}
+        </p>
+        <p>
+          <span className="text-green-600">Price:</span> ${price} /unit
+        </p>
+        <p>
+          <span className="text-green-600">Stock Available:</span>{" "}
+          {available_quantity} pieces
+        </p>
+        <p>
+          <span className="text-green-600">Minimum Order:</span> {min_order}{" "}
+          pieces
+        </p>
         <div className="card-actions">
           <button
             className="btn btn-sm btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary"

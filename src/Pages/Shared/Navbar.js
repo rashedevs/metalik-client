@@ -62,7 +62,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-accent text-red-400 font-semibold">
       <div className="navbar">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -89,7 +89,7 @@ const Navbar = () => {
           </ul>
         </div>
         <a
-          className="btn btn-ghost normal-case text-2xl font-bold text-purple-900"
+          className="btn btn-ghost normal-case text-2xl font-bold text-white"
           href="/"
         >
           Metalik

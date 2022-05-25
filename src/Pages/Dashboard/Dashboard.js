@@ -22,36 +22,58 @@ const Dashboard = () => {
         <ul className="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li>
-            <Link to="/dashboard">My Profile</Link>
+            <Link to="/dashboard">
+              <span className="text-pink-600 font-semibold">My Profile</span>
+            </Link>
           </li>
           {!admin && (
             <li>
-              <Link to="/dashboard/orders">My Orders</Link>
+              <Link to="/dashboard/orders">
+                <span className="text-pink-600 font-semibold">My Orders</span>
+              </Link>
             </li>
           )}
           {!admin && (
             <li>
-              <Link to="/dashboard/review">Add A Review</Link>
+              <Link to="/dashboard/review">
+                <span className="text-pink-600 font-semibold">
+                  Add A Review
+                </span>
+              </Link>
             </li>
           )}
           {admin && (
             <li>
-              <Link to="/dashboard/manageorders">Manage All Orders</Link>
+              <Link to="/dashboard/manageorders">
+                <span className="text-pink-600 font-semibold">
+                  Manage All Orders
+                </span>
+              </Link>
             </li>
           )}
           {admin && (
             <li>
-              <Link to="/dashboard/addproduct">Add A Product</Link>
+              <Link to="/dashboard/addproduct">
+                <span className="text-pink-600 font-semibold">
+                  Add A Product
+                </span>
+              </Link>
             </li>
           )}
           {admin && (
             <li>
-              <Link to="/dashboard/makeadmin">Make Admin</Link>
+              <Link to="/dashboard/makeadmin">
+                <span className="text-pink-600 font-semibold">Make Admin</span>
+              </Link>
             </li>
           )}
           {admin && (
             <li>
-              <Link to="/dashboard/manageproducts">Manage Products</Link>
+              <Link to="/dashboard/manageproducts">
+                <span className="text-pink-600 font-semibold">
+                  Manage Products
+                </span>
+              </Link>
             </li>
           )}
         </ul>
