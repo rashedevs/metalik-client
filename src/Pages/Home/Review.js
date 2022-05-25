@@ -11,7 +11,6 @@ const Review = ({ review }) => {
               type="radio"
               name="rating-4"
               className="mask mask-star-2 bg-green-500"
-              checked
             />
           </span>
         </h2>
