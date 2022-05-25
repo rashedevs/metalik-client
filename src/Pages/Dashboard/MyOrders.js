@@ -1,55 +1,44 @@
-import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase.init";
+import { useQuery } from "react-query";
+import Loading from "../Shared/Loading";
+import OrdersRow from "./OrdersRow";
+import { useState } from "react";
+import DeleteModal from "./DeleteModal";
 
 const MyOrders = () => {
+  const [deleting, setDeleting] = useState(null);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-  const [myOrders, setMyOrders] = useState([]);
-  useEffect(() => {
-    const email = user?.email;
-    const url = `https://powerful-bastion-48261.herokuapp.com/orders?email=${email}`;
-    if (user) {
-      fetch(url, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
-        .then((res) => {
-          if (res.status === 401 || res.status === 403) {
-            signOut(auth);
-            localStorage.removeItem("accessToken");
-            navigate("/");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          setMyOrders(data);
-        });
-    }
-  }, [myOrders, user, navigate]);
+  const email = user.email;
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useQuery("orders", () =>
+    fetch(`http://localhost:5000/orders/?email=${email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/");
+      }
+      return res.json();
+    })
+  );
 
-  // delete a specific order
-  const handleDelete = (id) => {
-    const proceed = window.confirm("Are you sure?");
-    if (proceed) {
-      const url = `https://powerful-bastion-48261.herokuapp.com/orders/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const remaining = myOrders.filter((order) => order._id !== id);
-          setMyOrders(remaining);
-        });
-    }
-  };
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div>
-      <h2>Here is my orders: {myOrders.length}</h2>
+      <h2>Here is my orders: {orders.length}</h2>
       <div class="overflow-x-auto">
         <table class="table w-full">
           <thead>
@@ -64,51 +53,25 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {myOrders.map((order, index) => (
-              <tr key={index} order={order}>
-                <th>{index + 1}</th>
-                <td>{order.name}</td>
-                <td>{order.quantity}</td>
-                <td>{order.price}</td>
-                <td>
-                  {!order.paid ? (
-                    "Unpaid"
-                  ) : (
-                    <div>
-                      <p>
-                        <span className="text-green-600">Paid</span>
-                      </p>
-                      <p>
-                        Transaction id:{" "}
-                        <span className="text-blue-600">
-                          {order.transactionId}
-                        </span>
-                      </p>
-                    </div>
-                  )}
-                </td>
-                <td>
-                  {!order.paid && (
-                    <Link to={`/dashboard/payment/${order._id}`}>
-                      <button className="btn btn-xs btn-primary">Pay</button>
-                    </Link>
-                  )}
-                </td>
-                <td>
-                  {!order.paid && (
-                    <button
-                      onClick={() => handleDelete(order._id)}
-                      className="btn btn-xs btn-error "
-                    >
-                      Cancel
-                    </button>
-                  )}
-                </td>
-              </tr>
+            {orders.map((order, index) => (
+              <OrdersRow
+                key={order._id}
+                index={index}
+                order={order}
+                refetch={refetch}
+                setDeleting={setDeleting}
+              ></OrdersRow>
             ))}
           </tbody>
         </table>
       </div>
+      {deleting && (
+        <DeleteModal
+          deleting={deleting}
+          refetch={refetch}
+          setDeleting={setDeleting}
+        ></DeleteModal>
+      )}
     </div>
   );
 };
