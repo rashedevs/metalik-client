@@ -50,7 +50,7 @@ const AddProduct = () => {
   };
   return (
     <div>
-      <h2 className="text-xl text-center text-purple-600 font-semibold p-0 mt-0">
+      <h2 className="text-xl text-center text-purple-600 font-semibold my-3">
         Add A Product
       </h2>
       <div className="flex justify-center m-0">

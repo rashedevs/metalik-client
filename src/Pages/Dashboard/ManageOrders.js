@@ -11,7 +11,7 @@ const ManageOrders = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch("http://localhost:5000/order", {
+    fetch("https://powerful-bastion-48261.herokuapp.com/order", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

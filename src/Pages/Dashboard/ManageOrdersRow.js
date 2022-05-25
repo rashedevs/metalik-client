@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const ManageOrdersRow = ({ order, index, refetch, setDeleting }) => {
   const { _id, name, quantity, paid, status, email } = order;
   const makeShipped = () => {
-    fetch(`http://localhost:5000/order/${_id}`, {
+    fetch(`https://powerful-bastion-48261.herokuapp.com/order/${_id}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

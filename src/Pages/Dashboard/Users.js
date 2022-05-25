@@ -21,7 +21,9 @@ const Users = () => {
   }
   return (
     <div>
-      <h2 className="text-xl text-purple-600 text-center">All users </h2>
+      <h2 className="text-xl text-center text-purple-600 font-semibold my-3">
+        All users{" "}
+      </h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

@@ -10,7 +10,7 @@ const MyProfile = () => {
   }
   return (
     <div>
-      <h2 className="text-xl text-center text-purple-600 font-semibold p-0 mt-0">
+      <h2 className="text-xl text-center text-purple-600 font-semibold my-3">
         My Profile
       </h2>
       <p className="text-primary text-2xl">{user.displayName}</p>

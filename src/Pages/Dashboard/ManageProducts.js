@@ -22,8 +22,8 @@ const ManageProducts = () => {
   }
   return (
     <div>
-      <h2 className="text-xl text-center text-purple-600 font-semibold p-0 mt-0">
-        Manage Products {tools.length}
+      <h2 className="text-xl text-center text-purple-600 font-semibold my-3">
+        Manage Products
       </h2>
       <div class="overflow-x-auto">
         <table class="table w-full">

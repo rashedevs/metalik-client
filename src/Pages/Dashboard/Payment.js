@@ -29,7 +29,7 @@ const Payment = () => {
   //   console.log(order);
   return (
     <div>
-      <h2 className="text-xl text-center text-purple-600 font-semibold p-0 mt-0">
+      <h2 className="text-xl text-center text-purple-600 font-semibold my-3">
         Make Payment
       </h2>
       <div class="card w-50 max-w-md bg-base-100 shadow-xl my-12">
