@@ -48,7 +48,7 @@ const MyOrders = () => {
         <table class="table w-full">
           <thead>
             <tr>
-              <th></th>
+              <th>SL</th>
               <th>Tool</th>
               <th>Quantity</th>
               <th>Total Price</th>

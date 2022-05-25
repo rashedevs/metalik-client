@@ -91,13 +91,28 @@ const Purchase = () => {
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card lg:max-w-lg bg-base-100 shadow-xl">
           <div className="card-body items-center text-center">
-            <h2 className="card-title text-purple-900">{name}</h2>
-            <h2 className="card-title text-pink-700">{user.displayName}</h2>
-            <p className="text-pink-500">Your email: {user.email}</p>
-            <p>Description: {description}</p>
-            <p>Price: ${price} /unit</p>
-            <p>Stock Available: {available_quantity} pieces</p>
-            <p>Minimum Order: {min_order} pieces</p>
+            <h2 className="card-title text-purple-600 font-semibold">{name}</h2>
+            <p>
+              <span className="text-pink-600 font-semibold">Description:</span>{" "}
+              {description}
+            </p>
+            <p>
+              <span className="text-pink-600 font-semibold">Price:</span> $
+              {price} /unit
+            </p>
+            <p>
+              {" "}
+              <span className="text-pink-600 font-semibold">
+                Stock Available:
+              </span>{" "}
+              {available_quantity} pieces
+            </p>
+            <p>
+              <span className="text-pink-600 font-semibold">
+                Minimum Order:
+              </span>{" "}
+              {min_order} pieces
+            </p>
           </div>
           <figure className="px-10 pt-10">
             <img src={img} alt="tool" className="rounded-xl" />
@@ -105,6 +120,12 @@ const Purchase = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
+            <h2 className="text-center text-pink-700 font-bold">
+              User: <span className="text-primary">{user.displayName}</span>
+            </h2>
+            <h2 className="text-center text-pink-500 font-bold">
+              Email: <span className="text-primary">{user.email}</span>
+            </h2>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control w-full max-w-xs">
                 <label className="label">

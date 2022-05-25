@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const ManageOrdersRow = ({ order, index, refetch, setDeleting }) => {
+  const [btnstatus, setbtnStatus] = useState(false);
   const { _id, name, quantity, paid, status, email } = order;
   const makeShipped = () => {
     fetch(`https://powerful-bastion-48261.herokuapp.com/order/${_id}`, {
@@ -13,6 +14,7 @@ const ManageOrdersRow = ({ order, index, refetch, setDeleting }) => {
       .then((res) => res.json())
       .then((data) => {
         refetch();
+        setbtnStatus(true);
         toast.success("Shipped successfully");
       });
   };
@@ -47,7 +49,11 @@ const ManageOrdersRow = ({ order, index, refetch, setDeleting }) => {
           </label>
         )}
         {paid && (
-          <button onClick={makeShipped} className="btn btn-xs btn-accent">
+          <button
+            disabled={btnstatus}
+            onClick={makeShipped}
+            className="btn btn-xs btn-accent"
+          >
             Shipped Now
           </button>
         )}
