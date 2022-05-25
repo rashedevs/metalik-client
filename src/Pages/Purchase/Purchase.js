@@ -44,6 +44,7 @@ const Purchase = () => {
       phone,
       description,
       img,
+      status: "pending",
       quantity,
       paid: false,
     };

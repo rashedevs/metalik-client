@@ -21,6 +21,7 @@ import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import { ToastContainer } from "react-toastify";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
+import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route index element={<MyProfile></MyProfile>} />
           <Route path="orders" element={<MyOrders></MyOrders>} />
           <Route path="review" element={<AddAReview></AddAReview>} />
+          <Route path="payment/:id" element={<Payment></Payment>} />
           <Route
             path="manageorders"
             element={

@@ -18,11 +18,14 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/orders/?email=${email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://powerful-bastion-48261.herokuapp.com/orders/?email=${email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");
@@ -38,7 +41,9 @@ const MyOrders = () => {
 
   return (
     <div>
-      <h2>Here is my orders: {orders.length}</h2>
+      <h2 className="text-xl text-center text-purple-600 font-semibold my-3">
+        My Orders
+      </h2>
       <div class="overflow-x-auto">
         <table class="table w-full">
           <thead>

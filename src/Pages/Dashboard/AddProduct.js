@@ -28,7 +28,7 @@ const AddProduct = () => {
             price: data.price,
           };
           // send to db
-          fetch("http://localhost:5000/tool", {
+          fetch("https://powerful-bastion-48261.herokuapp.com/tool", {
             method: "POST",
             headers: {
               "content-type": "application/json",
