@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
+import icon from "../../assets/icon.png";
 
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
@@ -34,15 +35,6 @@ const Navbar = () => {
       <li>
         {user ? (
           <div>
-            {/* <button
-              className="btn btn-ghost my-auto flex flex-col"
-              onClick={logout}
-            >
-              LogOut <br />{" "}
-              <small className="text-primary font-bold mt-3 bg-accent rounded px-1">
-                {user?.displayName || ""}
-              </small>
-            </button> */}
             <div
               className="tooltip tooltip-open tooltip-bottom tooltip-primary"
               data-tip={user?.displayName || ""}
@@ -91,7 +83,11 @@ const Navbar = () => {
         <a
           className="btn btn-ghost normal-case text-2xl font-bold text-white"
           href="/"
+          as={Link}
         >
+          <span>
+            <img className="w-8 rounded-3xl" src={icon} alt="" />
+          </span>
           Metalik
         </a>
       </div>
