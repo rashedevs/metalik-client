@@ -18,8 +18,10 @@ const OrdersRow = ({ order, index, refetch, setDeleting }) => {
               <span className="text-green-600">Paid</span>
             </p>
             <p>
-              Transaction id:{" "}
-              <span className="text-blue-600">{transactionId}</span>
+              <small>
+                Transaction id:{" "}
+                <span className="text-blue-600">{transactionId}</span>
+              </small>
             </p>
           </div>
         )}

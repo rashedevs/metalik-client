@@ -27,7 +27,7 @@ const MyProfile = () => {
       linkedin: linkedin,
     };
     // put to db
-    const url = `http://localhost:5000/profile?email=${email}`;
+    const url = `https://powerful-bastion-48261.herokuapp.com/profile?email=${email}`;
     fetch(url, {
       method: "PUT",
       headers: {
