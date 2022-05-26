@@ -43,7 +43,7 @@ const ManageOrdersRow = ({ order, index, refetch, setDeleting }) => {
           <label
             onClick={() => setDeleting(order)}
             for="delete-confirm-modal"
-            class="btn btn-xs btn-error"
+            className="btn btn-xs btn-error"
           >
             Cancel Now
           </label>

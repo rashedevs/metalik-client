@@ -44,8 +44,8 @@ const MyOrders = () => {
       <h2 className="text-xl text-center text-purple-600 font-semibold my-3">
         My Orders
       </h2>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>SL</th>

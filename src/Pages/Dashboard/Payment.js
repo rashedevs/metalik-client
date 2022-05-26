@@ -35,15 +35,15 @@ const Payment = () => {
       </h2>
       <div class="card w-100 text-center  bg-base-100 shadow-xl my-12">
         <div class="card-body">
-          <p className="text-success text-xl font-bold">
+          <p class="text-success text-xl font-bold">
             Hello! {user?.displayName}
           </p>
           <h2 class="font-semibold text-center">
-            Please pay for <span className="text-orange-700">{order.name}</span>
+            Please pay for <span class="text-orange-700">{order.name}</span>
           </h2>
 
           <p>
-            Total Amount $<span className="text-red-600">{order.price}</span>
+            Total Amount $<span class="text-red-600">{order.price}</span>
           </p>
         </div>
       </div>
