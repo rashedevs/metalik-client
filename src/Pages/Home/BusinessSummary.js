@@ -1,36 +1,39 @@
 import React, { useState } from "react";
-import banner from "./../../assets/background/banner.png";
 import BusinessCard from "./BusinessCard";
+import partner from "../../assets/summary/partner.png";
+import revenue from "../../assets/summary/revenue.png";
+import tools from "../../assets/summary/tools.png";
+import review from "../../assets/summary/review.png";
 
 const CountUp = () => {
   const [data] = useState([
     {
       id: 1,
-      name: "Dealers",
-      icon: banner,
-      quantity: "200",
+      name: "Partners",
+      icon: partner,
+      quantity: "180",
       plus: "+",
     },
     {
       id: 2,
       name: "Annual Revenue",
-      icon: banner,
-      quantity: "125",
-      plus: "M",
+      icon: revenue,
+      quantity: "100",
+      plus: "M $ ↗︎",
     },
     {
       id: 3,
-      name: "Parts",
-      icon: banner,
-      quantity: "300",
+      name: "Tools",
+      icon: tools,
+      quantity: "250",
       plus: "+",
     },
     {
       id: 4,
       name: "Reviews",
-      icon: banner,
-      quantity: "234",
-      plus: "+",
+      icon: review,
+      quantity: "34",
+      plus: "K+",
     },
   ]);
   return (

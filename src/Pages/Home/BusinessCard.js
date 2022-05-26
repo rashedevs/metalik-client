@@ -7,22 +7,22 @@ const BusinessCard = ({ summary }) => {
   return (
     <div>
       <div>
-        <div className="card shadow-xl border bg-cyan-600">
+        <div className="card shadow-3xl border bg-cyan-600">
           <div className="card-body">
             <div>
               <img
-                className="w-20 mx-auto bg-white p-2 rounded-lg"
+                className="w-24 h-16 mx-auto bg-white p-2 rounded-lg"
                 src={icon}
-                alt=""
+                alt="summary icon"
               />
-              <p className=" uppercase text-center font-bold text-white mt-2">
+              <p className=" uppercase text-center font-bold text-white mt-3">
                 {name}
               </p>
             </div>
 
             <div>
-              <p className="text-5xl text-center font-bold text-white">
-                <CountUp delay={2} end={quantity} duration={5} />
+              <p className="text-4xl text-center font-bold text-yellow-400">
+                <CountUp delay={1} end={quantity} duration={5} />
                 {summary?.plus}
               </p>
             </div>
