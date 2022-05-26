@@ -98,7 +98,7 @@ const Blogs = () => {
               <p class="py-6">
                 We can use find, to get the specific name product. As example,
                 <br />
-                const products = [{"{x}"}',{"{y}"},{"{z}"}]; <br />
+                const products = [{"{x}"},{"{y}"},{"{z}"}]; <br />
                 where every object of the array contains a name. We can create a
                 function to find product by its name. <br />
                 if (product.name==='searched name') matched, then this function
