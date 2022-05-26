@@ -61,7 +61,7 @@ const MyProfile = () => {
           Update your profile
         </h2>
         <form
-          className="flex flex-col items-center justify-center"
+          className="flex flex-col items-center justify-center mb-5"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="form-control w-full max-w-xs">
