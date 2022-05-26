@@ -49,7 +49,7 @@ const MyPortfolio = () => {
                         <th>2009-2010</th>
                         <td>SSC</td>
                         <td>Science</td>
-                        <td>BaroAliia Mazar Sharif High School</td>
+                        <td>BaroAulia Mazar Sharif High School</td>
                       </tr>
                     </tbody>
                   </table>
