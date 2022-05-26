@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
@@ -16,8 +17,31 @@ const MyProfile = () => {
     return <Loading></Loading>;
   }
   const onSubmit = async (data) => {
-    console.log(data);
-    reset();
+    const { name, email, education, location, number, linkedin } = data;
+    const profile = {
+      name: name,
+      email: email,
+      education: education,
+      location: location,
+      phone: number,
+      linkedin: linkedin,
+    };
+    // put to db
+    const url = `http://localhost:5000/profile?email=${email}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(profile),
+    })
+      .then((res) => res.json())
+
+      .then((data) => {
+        toast.success("Profile updated successfully");
+        reset();
+      });
   };
   return (
     <div>
@@ -43,11 +67,13 @@ const MyProfile = () => {
           <div className="form-control w-full max-w-xs">
             <input
               type="text"
+              readOnly
+              value={user?.displayName}
               placeholder="Your name"
               className="input input-bordered w-full max-w-xs"
               {...register("name", {
                 required: {
-                  value: true,
+                  value: false,
                   message: "Name is required",
                 },
               })}
