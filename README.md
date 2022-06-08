@@ -4,6 +4,10 @@
 
 Click here to visit the live site: https://metalik-ab578.web.app/
 
+## Admin Credentials :
+
+- User: metalik || Password: 123456
+
 ## Description :
 
 - Metalik is a carpentry tool manufacturer company website, where normal user can order bulk quantity tools, set review and admin can manage all orders or products.
