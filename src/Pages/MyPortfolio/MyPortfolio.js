@@ -12,7 +12,7 @@ const MyPortfolio = () => {
           <div class="hero-content text-center">
             <div>
               <h1 class="text-xl font-semibold text-green-700 my-3">
-                Name: <span className="text-pink-600">Rashed Uz Zaman</span>
+                Name: <span className="text-pink-600">Rased Uz Zaman</span>
               </h1>
               <h1 class=" font-semibold text-green-700 my-3">
                 Email:{" "}
