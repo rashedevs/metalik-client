@@ -16,17 +16,14 @@ const CheckoutForm = ({ order }) => {
   const { _id, price } = order;
 
   useEffect(() => {
-    fetch(
-      "https://powerful-bastion-48261.herokuapp.com/create-payment-intent",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ price }),
-      }
-    )
+    fetch("https://metalik-server.vercel.app/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ price }),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
@@ -77,7 +74,7 @@ const CheckoutForm = ({ order }) => {
         order: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://powerful-bastion-48261.herokuapp.com/order/${_id}`, {
+      fetch(`https://metalik-server.vercel.app/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

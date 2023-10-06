@@ -28,7 +28,7 @@ const Purchase = () => {
   }, [status, errors.quantity?.type]);
 
   useEffect(() => {
-    fetch(`https://powerful-bastion-48261.herokuapp.com/tool/${id}`)
+    fetch(`https://metalik-server.vercel.app/tool/${id}`)
       .then((res) => res.json())
       .then((data) => setTool(data));
   }, [tool, id]);
@@ -58,7 +58,7 @@ const Purchase = () => {
     };
 
     //update data to the server
-    const url1 = `https://powerful-bastion-48261.herokuapp.com/tool/${id}`;
+    const url1 = `https://metalik-server.vercel.app/tool/${id}`;
     fetch(url1, {
       method: "PUT",
       headers: {
@@ -71,7 +71,7 @@ const Purchase = () => {
         // console.log(result);
       });
     //send ordered data to db
-    const url = `https://powerful-bastion-48261.herokuapp.com/order`;
+    const url = `https://metalik-server.vercel.app/order`;
     fetch(url, {
       method: "POST",
       headers: {

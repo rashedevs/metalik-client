@@ -11,7 +11,7 @@ const AddAReview = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
-    const url = `https://powerful-bastion-48261.herokuapp.com/review`;
+    const url = `https://metalik-server.vercel.app/review`;
     fetch(url, {
       method: "POST",
       headers: {

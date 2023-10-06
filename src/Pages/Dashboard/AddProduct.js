@@ -28,7 +28,7 @@ const AddProduct = () => {
             price: data.price,
           };
           // send to db
-          fetch("https://powerful-bastion-48261.herokuapp.com/tool", {
+          fetch("https://metalik-server.vercel.app/tool", {
             method: "POST",
             headers: {
               "content-type": "application/json",

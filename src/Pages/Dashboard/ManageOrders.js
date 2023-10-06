@@ -11,7 +11,7 @@ const ManageOrders = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch("https://powerful-bastion-48261.herokuapp.com/order", {
+    fetch("https://metalik-server.vercel.app/order", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

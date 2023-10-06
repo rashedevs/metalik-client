@@ -11,7 +11,7 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("tools", () =>
-    fetch("https://powerful-bastion-48261.herokuapp.com/tool", {
+    fetch("https://metalik-server.vercel.app/tool", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

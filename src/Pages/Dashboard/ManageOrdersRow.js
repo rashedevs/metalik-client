@@ -5,7 +5,7 @@ const ManageOrdersRow = ({ order, index, refetch, setDeleting }) => {
   const [btnstatus, setbtnStatus] = useState(false);
   const { _id, name, quantity, paid, status, email } = order;
   const makeShipped = () => {
-    fetch(`https://powerful-bastion-48261.herokuapp.com/order/${_id}`, {
+    fetch(`https://metalik-server.vercel.app/order/${_id}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

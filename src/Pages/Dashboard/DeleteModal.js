@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const DeleteModal = ({ deleting, refetch, setDeleting }) => {
   const { _id, name } = deleting;
   const handleDelete = (id) => {
-    const url = `https://powerful-bastion-48261.herokuapp.com/orders/${id}`;
+    const url = `https://metalik-server.vercel.app/orders/${id}`;
     fetch(url, {
       method: "DELETE",
       headers: {

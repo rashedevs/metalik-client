@@ -27,7 +27,7 @@ const MyProfile = () => {
       linkedin: linkedin,
     };
     // put to db
-    const url = `https://powerful-bastion-48261.herokuapp.com/profile?email=${email}`;
+    const url = `https://metalik-server.vercel.app/profile?email=${email}`;
     fetch(url, {
       method: "PUT",
       headers: {

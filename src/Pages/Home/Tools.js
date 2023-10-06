@@ -4,7 +4,8 @@ import Tool from "./Tool";
 const Tools = () => {
   const [tools, setTools] = useState([]);
   useEffect(() => {
-    fetch("https://powerful-bastion-48261.herokuapp.com/tool")
+    // fetch("https://metalik-server.vercel.app/tool")
+    fetch("https://metalik-server.vercel.app/tool")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, [tools]);

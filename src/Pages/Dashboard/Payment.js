@@ -14,7 +14,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { id } = useParams();
   const [user, loading] = useAuthState(auth);
-  const url = `https://powerful-bastion-48261.herokuapp.com/orders/${id}`;
+  const url = `https://metalik-server.vercel.app/orders/${id}`;
   const { data: order, isLoading } = useQuery(["order", id], () =>
     fetch(url, {
       method: "GET",
